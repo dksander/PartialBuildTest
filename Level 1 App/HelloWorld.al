@@ -7,6 +7,7 @@ pageextension 50020 CustomerListExtLevel1 extends "Customer List"
     trigger OnOpenPage();
     begin
         Message('Hello world From Level 1 App');
+        //Change after partial have been set in Level 1 App
     end;
 }
 
