@@ -10,10 +10,17 @@
   "help": "",
   "url": "",
   "logo": "",
-  "dependencies": [],
+  "dependencies": [
+    {
+      "id": "7866a76c-2ed7-4d45-bc00-e6459cf332b7",
+      "publisher": "LS",
+      "name": "Base App",
+      "version": "1.0.0.0"
+    }
+  ],
   "screenshots": [],
   "platform": "1.0.0.0",
-  "application": "22.0.0.0",
+  "application": "25.0.0.0",
   "idRanges": [
     {
       "from": 50020,
