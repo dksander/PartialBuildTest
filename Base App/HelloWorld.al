@@ -6,6 +6,7 @@ pageextension 50000 CustomerListExtBaseApp extends "Customer List"
 {
     trigger OnOpenPage();
     begin
+        //Change in base app in a pull request
         Message('Hello world From Base App');
     end;
 }
