@@ -7,6 +7,7 @@ pageextension 50000 CustomerListExtBaseApp extends "Customer List"
     trigger OnOpenPage();
     begin
         Message('Hello world From Base App');
+        //Change after partial have been set in Base App
     end;
 }
 
