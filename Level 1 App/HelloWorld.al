@@ -6,6 +6,7 @@ pageextension 50020 CustomerListExtLevel1 extends "Customer List"
 {
     trigger OnOpenPage();
     begin
+        //Change in Level 1 App to a pull request
         Message('Hello world From Level 1 App');
     end;
 }
