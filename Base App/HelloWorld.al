@@ -9,7 +9,7 @@ pageextension 50000 CustomerListExtBaseApp extends "Customer List"
         //Change in base app in a pull request
         Message('Hello world From Base App');
         //Change after partial have been set in Base App
-        Message('Modifyed Base app in a pull request');
+        Message('Modifyed Base-app in a pull request');
     end;
 }
 
