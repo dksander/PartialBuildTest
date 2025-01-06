@@ -4,6 +4,7 @@
   "testFolders": [],
   "bcptTestFolders": [],
   "partialBuilds": {
-    "enabled": true
+    "enabled": true,
+    "mode": "modifiedApps"
   }
 }
