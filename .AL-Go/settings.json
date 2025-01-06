@@ -3,7 +3,7 @@
   "appFolders": [],
   "testFolders": [],
   "bcptTestFolders": [],
-  "partialBuilds": {
+  "incrementalBuilds": {
     "enabled": true,
     "mode": "modifiedApps"
   }
