@@ -2,7 +2,8 @@
   "type": "PTE",
   "templateUrl": "https://github.com/freddydk/AL-Go@partial",
   "partialBuilds": {
-    "enabled": true
+    "enabled": true,
+    "mode": "modifiedApps"
   },
   "templateSha": "d84bfa781e1d61bc8f13eacdd9d2455968ee8c3a"
 }
