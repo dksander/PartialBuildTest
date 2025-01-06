@@ -1,7 +1,7 @@
 {
   "type": "PTE",
   "templateUrl": "https://github.com/freddydk/AL-Go@partial",
-  "partialBuilds": {
+  "incrementalBuilds": {
     "enabled": true,
     "mode": "modifiedApps"
   },
