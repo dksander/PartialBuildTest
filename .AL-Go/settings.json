@@ -4,7 +4,7 @@
   "testFolders": [],
   "bcptTestFolders": [],
   "incrementalBuilds": {
-    "enabled": true,
+    "onPush": true,
     "mode": "modifiedApps"
   }
 }
