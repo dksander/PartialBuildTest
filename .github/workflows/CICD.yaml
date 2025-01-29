@@ -9,10 +9,6 @@ on:
       - '!.github/workflows/CICD.yaml'
     branches: [ 'main', 'release/*', 'feature/*' ]
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref_name }}
-  cancel-in-progress: true
-
 defaults:
   run:
     shell: powershell
@@ -60,7 +56,6 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           lfs: true
-          submodules: recursive
 
       - name: Initialize the workflow
         id: init
@@ -73,7 +68,24 @@ jobs:
         uses: freddydk/AL-Go/Actions/ReadSettings@partial
         with:
           shell: powershell
-          get: type, powerPlatformSolutionFolder
+          get: type,powerPlatformSolutionFolder,useGitSubmodules
+
+      - name: Read submodules token
+        id: ReadSubmodulesToken
+        if: env.useGitSubmodules != 'false' && env.useGitSubmodules != ''
+        uses: freddydk/AL-Go/Actions/ReadSecrets@partial
+        with:
+          shell: powershell
+          gitHubSecrets: ${{ toJson(secrets) }}
+          getSecrets: '-gitSubmodulesToken'
+
+      - name: Checkout Submodules
+        if: env.useGitSubmodules != 'false' && env.useGitSubmodules != ''
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          lfs: true
+          submodules: ${{ env.useGitSubmodules }}
+          token: '${{ fromJson(steps.ReadSubmodulesToken.outputs.Secrets).gitSubmodulesToken }}'
 
       - name: Determine Workflow Depth
         id: DetermineWorkflowDepth
@@ -86,7 +98,6 @@ jobs:
         with:
           shell: powershell
           maxBuildDepth: ${{ env.workflowDepth }}
-          publishSkippedProjectArtifacts: 'true'
 
       - name: Determine PowerPlatform Solution Folder
         id: DeterminePowerPlatformSolutionFolder
@@ -171,8 +182,6 @@ jobs:
       baselineWorkflowRunId: ${{ needs.Initialization.outputs.baselineWorkflowRunId }}
       baselineWorkflowSHA: ${{ needs.Initialization.outputs.baselineWorkflowSHA }}
       secrets: 'licenseFileUrl,codeSignCertificateUrl,*codeSignCertificatePassword,keyVaultCertificateUrl,*keyVaultCertificatePassword,keyVaultClientId,gitHubPackagesContext,applicationInsightsConnectionString'
-      publishThisBuildArtifacts: ${{ needs.Initialization.outputs.workflowDepth > 1 }}
-      publishArtifacts: ${{ github.ref_name == 'main' || startswith(github.ref_name, 'release/') || startswith(github.ref_name, 'releases/') || needs.Initialization.outputs.deliveryTargetsJson != '[]' || needs.Initialization.outputs.environmentCount > 0 }}
       signArtifacts: true
       useArtifactCache: true
 
