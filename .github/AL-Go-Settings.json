@@ -1,9 +1,9 @@
 {
   "type": "PTE",
-  "templateUrl": "https://github.com/freddydk/AL-Go@partial",
+  "templateUrl": "https://github.com/microsoft/AL-Go-PTE@main",
   "incrementalBuilds": {
     "enabled": true,
     "mode": "modifiedApps"
   },
-  "templateSha": "bfe4058a7e508feaf6dcd197089a08371c7f3b30"
+  "templateSha": "6472dd494728483cee9b04dc7356fd6f2cc737b4"
 }
